@@ -64,3 +64,18 @@ first_five_rows = new_titanic_survival.iloc[0:5]
 first_ten_rows = new_titanic_survival.iloc[0:10]
 row_position_fifth = new_titanic_survival.iloc[4]
 row_index_25 = new_titanic_survival.loc[25]
+
+## 10. Using Column Indexes ##
+
+first_row_first_column = new_titanic_survival.iloc[0,0]
+all_rows_first_three_columns = new_titanic_survival.iloc[:,0:3]
+row__index_83_age = new_titanic_survival.loc[83,"age"]
+row_index_1000_pclass = new_titanic_survival.loc[766,"pclass"]
+row_index_1100_age = new_titanic_survival.loc[1100,"age"]
+row_index_25_survived = new_titanic_survival.loc[25,"survived"]
+five_rows_three_cols = new_titanic_survival.iloc[0:5,0:3]
+
+## 11. Reindexing Rows ##
+
+titanic_reindexed = new_titanic_survival.reset_index(drop=True)
+print(titanic_reindexed.iloc[0:5,0:3])

@@ -79,3 +79,19 @@ five_rows_three_cols = new_titanic_survival.iloc[0:5,0:3]
 
 titanic_reindexed = new_titanic_survival.reset_index(drop=True)
 print(titanic_reindexed.iloc[0:5,0:3])
+
+## 12. Apply Functions Over a DataFrame ##
+
+def hundredth_row(column):
+    hundredth_item = column.iloc[99]
+    return hundredth_item
+
+hundredth_row = titanic_survival.apply(hundredth_row)
+
+def counting_null(column):
+    column_null = pd.isnull(column)
+    null = column[column_null]
+    return len(null)
+
+column_null_count = titanic_survival.apply(counting_null)
+print(column_null_count)

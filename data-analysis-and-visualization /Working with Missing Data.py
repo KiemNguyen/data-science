@@ -95,3 +95,29 @@ def counting_null(column):
 
 column_null_count = titanic_survival.apply(counting_null)
 print(column_null_count)
+
+## 13. Applying a Function to a Row ##
+
+def is_minor(row):
+    if row["age"] < 18:
+        return True
+    else:
+        return False
+
+minors = titanic_survival.apply(is_minor, axis=1)
+
+def generate_age_label(row):
+    age = row["age"]
+    if pd.isnull(age):
+        return "unknown"
+    elif age < 18:
+        return "minor"
+    else:
+        return "adult"
+    
+age_labels = titanic_survival.apply(generate_age_label, axis=1)
+print(age_labels)
+
+## 14. Calculating Survival Percentage by Age Group ##
+
+age_group_survival = titanic_survival.pivot_table(index = "age_labels", values = "survived")
